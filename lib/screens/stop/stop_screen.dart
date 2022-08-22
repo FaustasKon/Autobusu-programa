@@ -58,8 +58,23 @@ class TripStopTimeListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Exercise 2 and 4
-    final tripHeadSign = trip.trip_headsign ?? '';
-
-    return Text('$tripHeadSign: ${stopTime.departure_time}');
+    return ListTile(
+      leading: Container(
+        decoration: BoxDecoration(
+          color: route.parsedRouteColor,
+          borderRadius: BorderRadius.all(Radius.circular(8)),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            route.route_short_name ?? '',
+            style: TextStyle(color: route.parsedRouteTextColor),
+          ),
+        ),
+      ),
+      title: Text(trip.trip_headsign ?? ''),
+      trailing: Text(stopTime.departure_time),
+      subtitle: Text(route.route_long_name),
+    );
   }
 }
