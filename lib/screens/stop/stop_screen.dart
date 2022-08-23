@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gtfs_db/gtfs_db.dart';
 import 'package:transit/database/database_service.dart';
 import 'package:transit/models/db.dart';
+import 'package:transit/navigator_routes.dart';
+import 'package:transit/screens/trip/trip_screen.dart';
 import 'package:transit/widgets/app_future_loader.dart';
 
 class StopScreen extends StatelessWidget {
@@ -75,6 +77,20 @@ class TripStopTimeListTile extends StatelessWidget {
       title: Text(trip.trip_headsign ?? ''),
       trailing: Text(stopTime.departure_time),
       subtitle: Text(route.route_long_name),
+
+
+      onTap: (){
+        //print(trip.trip_headsign ?? '');\
+        Navigator.pushNamed(
+          context,
+          NavigatorRoutes.routeTrip,
+          arguments: TripScreenArguments(
+              stop: stop,
+              route: route,
+              trip: trip,
+          ),
+        );
+      },
     );
   }
 }

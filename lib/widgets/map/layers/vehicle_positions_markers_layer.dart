@@ -29,10 +29,19 @@ class VehiclePositionMarkersLayer {
             height: 20,
             builder: (context) {
               // TODO: Exercise 7
-              return Icon(
-                Icons.directions_bus,
-                size: 15,
-              );
+              return Container(
+                  decoration: BoxDecoration(
+                    color: routes[index].parsedRouteColor,
+                    borderRadius: BorderRadius.all(Radius.circular(8)),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      routes[index].route_short_name ?? '',
+                      style: TextStyle(color: routes[index].parsedRouteTextColor),
+                    ),
+                  ),
+                );
             },
           ),
       ],
